@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chymist Sales Inc. — Center of Solutions</title>
+  <link rel="icon" type="image/png" href="Logo/CSILOGO_colored.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #1a5a4a;
+      --primary-dark: #0f4037;
+      --primary-light: #2d8070;
+      --accent-gold: #E8A82C;
+      --text-dark: #1a1a1a;
+      --text-light: #f5f5f5;
+      --text-muted: #666666;
+      --border-light: #e8e8e8;
+      --bg-light: #f9f9f9;
+      --bg-white: #ffffff;
+      --radius: 20px;
+      --radius-sm: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: var(--bg-white);
+      margin-top: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Arvo', serif;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--text-dark);
+    }
+
+    h1 { font-size: 3.5rem; }
+    h2 { font-size: 2.2rem; }
+    h3 { font-size: 1.4rem; }
+
+    /* ─── NAVBAR ─── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: transparent;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+      box-shadow: none;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .navbar.scrolled .navbar-logo,
+    .navbar.scrolled .navbar-logo-text,
+    .navbar.scrolled .navbar-menu a {
+      color: var(--primary);
+    }
+
+    .navbar.scrolled .navbar-logo-tagline {
+      color: rgba(26, 90, 74, 0.7);
+    }
+
+    .navbar.scrolled .navbar-cta {
+      background: var(--primary);
+      color: white;
+    }
+
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: white;
+      font-weight: 700;
+      font-family: 'Arvo', serif;
+    }
+
+    .navbar-logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    .navbar-logo-text { font-size: 1.1rem; }
+    .navbar-logo-tagline { font-size: 0.75rem; font-style: italic; color: rgba(255,255,255,0.7); display: block; }
+
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex: 1;
+      justify-content: flex-end;
+      margin-right: 40px;
+    }
+
+    .navbar-menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+
+    .navbar-menu a:hover { opacity: 0.8; }
+
+    .navbar-cta {
+      background: white;
+      color: var(--primary);
+      padding: 10px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: transform 0.2s;
+    }
+
+    .navbar-cta:hover { transform: scale(1.05); }
+
+    /* ─── LAYOUT ─── */
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 100px;
+    }
+
+    /* ─── TYPOGRAPHY ─── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      border-radius: 0;
+      padding: 80px 60px;
+      text-align: left;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      margin-top: 80px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: -50px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(232,168,44,0.08);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      color: white;
+      max-width: 800px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+      font-size: 3.5rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent-gold);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.9);
+      max-width: 700px;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 14px 36px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: #f0b83f; }
+
+    .btn-ghost {
+      display: inline-block;
+      background: transparent;
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 14px 36px;
+      border-radius: var(--radius-sm);
+      border: 2px solid white;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      background: rgba(255,255,255,0.08);
+      padding: 32px;
+      border-radius: var(--radius-sm);
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-cell {
+      text-align: center;
+    }
+
+    .stat-num {
+      display: block;
+      font-family: 'Arvo', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
+
+    .stat-desc {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── ABOUT ─── */
+    .about {
+      background: var(--bg-white);
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about h2 { margin-bottom: 20px; }
+
+    .about h2 span { color: var(--primary); }
+
+    .about-body {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .about-pull {
+      font-family: 'Arvo', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--text-dark);
+      border-left: 3px solid var(--primary);
+      padding-left: 24px;
+      margin-top: 32px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .value-card {
+      background: var(--bg-light);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+    }
+
+    .value-icon {
+      width: 40px; height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 20px;
+      color: white;
+    }
+
+    .value-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .value-desc {
+      font-size: 0.95rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    /* ─── SERVICES ─── */
+    .services-header { margin-bottom: 50px; text-align: center; }
+
+    .services-header h2 { margin-bottom: 16px; }
+
+    .services-lead {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .service-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 8px 24px rgba(26, 90, 74, 0.1);
+    }
+
+    .service-card.featured { border: 2px solid var(--primary); }
+
+    .featured-badge {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: var(--primary);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+    }
+
+    .service-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: white;
+    }
+
+    .service-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .service-tagline {
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    .service-desc {
+      font-size: 0.95rem;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    /* ─── INGREDIENTS ─── */
+    .ingredients {
+      background: var(--bg-white);
+    }
+
+    .ingredients h2 { margin-bottom: 16px; }
+
+    .ingredients-lead {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      max-width: 700px;
+    }
+
+    .tier-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      margin: 48px 0 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tier-label::before {
+      content: '';
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .tier-label:first-of-type { margin-top: 0; }
+
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .cat-card {
+      background: var(--bg-light);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cat-icon {
+      width: 44px; height: 44px;
+      border-radius: var(--radius-sm);
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      color: white;
+      flex-shrink: 0;
+      font-size: 20px;
+    }
+
+    .cat-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .cat-benefit {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .cat-examples {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-top: auto;
+    }
+
+    .cat-card.commodity {
+      grid-column: span 3;
+      background: var(--bg-light);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      align-items: start;
+      padding: 32px;
+    }
+
+    .cat-card.commodity .cat-icon {
+      background: var(--primary);
+      width: 52px; height: 52px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 0;
+      color: white;
+    }
+
+    .cat-card.commodity .cat-name  { color: var(--text-dark); }
+
+    .cat-card.commodity .cat-benefit {
+      font-family: 'Arvo', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--text-dark);
+    }
+
+    .cat-card.commodity .cat-examples { color: var(--text-muted); margin-bottom: 16px; }
+
+    .ingredient-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .pill {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--primary);
+      background: white;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 6px 12px;
+    }
+
+    .note-box {
+      margin-top: 32px;
+      background: var(--bg-light);
+      border-left: 3px solid var(--primary);
+      border-radius: 0;
+      padding: 20px 24px;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .note-box strong { font-weight: 600; color: var(--text-dark); }
+
+    /* ─── PARTNERS ─── */
+    .partners-header { margin-bottom: 50px; text-align: center; }
+    .partners-header h2 { margin-bottom: 16px; }
+    .partners-header p {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      max-width: 700px;
+      line-height: 1.7;
+      margin: 0 auto;
+    }
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .partner-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s;
+    }
+
+    .partner-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 8px 24px rgba(26, 90, 74, 0.1);
+    }
+
+    .partner-card.exclusive {
+      border: 2px solid var(--primary);
+      position: relative;
+    }
+
+    .partner-card.wide {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .excl-badge {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: var(--primary);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+    }
+
+    .partner-icon {
+      width: 52px; height: 52px;
+      border-radius: var(--radius-sm);
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 26px;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .wide .partner-icon { margin-bottom: 0; }
+
+    .partner-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .partner-role {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    .partner-desc {
+      font-size: 0.95rem;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--text-muted);
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .partner-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--primary);
+      background: white;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 6px 12px;
+    }
+
+    .partner-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      border-top: 1px solid var(--border-light);
+      padding-top: 16px;
+      margin-top: auto;
+      transition: color 0.2s;
+    }
+
+    .partner-link:hover { color: var(--primary-light); }
+
+    .partner-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    .adm-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .spec-block {
+      background: var(--bg-light);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+    }
+
+    .spec-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .spec-items {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─── CTA SECTION ─── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      border-radius: var(--radius);
+      padding: 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -80px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      pointer-events: none;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-section h3 {
+      color: white;
+      margin-bottom: 12px;
+      font-size: 2rem;
+    }
+
+    .cta-section > .cta-content > p {
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .cta-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255,255,255,0.9);
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-item:hover { color: white; }
+
+    .contact-item svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      flex-shrink: 0;
+    }
+
+    .cta-testimonial {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius-sm);
+      padding: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-quote {
+      font-family: 'Arvo', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      line-height: 1.8;
+      color: white;
+      margin-bottom: 24px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: white;
+    }
+
+    .testimonial-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 2px;
+    }
+
+    .testimonial-role {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      background: var(--primary-dark);
+      color: rgba(255,255,255,0.7);
+      padding: 60px 40px 30px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 1.2fr;
+      gap: 48px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand h3 img {
+      height: 32px;
+      width: auto;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .footer-section h4 {
+      font-family: 'Arvo', serif;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.9rem;
+      line-height: 2;
+      transition: color 0.2s;
+    }
+
+    .footer-section a:hover { color: white; }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-legal a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      margin-left: 24px;
+      transition: color 0.2s;
+    }
+
+    .footer-legal a:hover { color: white; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+      }
+
+      .navbar-menu { gap: 24px; flex-direction: column; margin-right: 0; }
+      .navbar-menu a { display: none; }
+      .navbar-menu a:first-child { display: block; }
+
+      .page-content { padding: 60px 24px; gap: 60px; }
+
+      .hero {
+        text-align: left;
+        padding: 60px 40px;
+        margin-top: 60px;
+      }
+
+      .hero h1 { font-size: 2rem; }
+      .hero-ctas { justify-content: flex-start; }
+      .hero-stats { grid-template-columns: 1fr; gap: 16px; }
+
+      .about-layout,
+      .services-grid,
+      .partners-grid,
+      .cat-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-section {
+        grid-template-columns: 1fr;
+        padding: 40px;
+      }
+
+      .cat-card.commodity,
+      .partner-card.wide {
+        grid-column: span 1;
+        grid-template-columns: 1fr;
+      }
+
+      .cat-card.commodity { gap: 20px; }
+      .partner-card.wide { gap: 24px; }
+
+      .adm-specs { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+
+      .footer-legal { display: flex; justify-content: center; gap: 0; }
+      .footer-legal a { margin: 0 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .page-content { padding: 40px 16px; }
+      
+      .hero {
+        padding: 40px 20px;
+        margin-top: 60px;
+      }
+      
+      .hero h1 { font-size: 1.5rem; }
+      .hero-stats { padding: 20px; }
+
+      .services-grid { gap: 20px; }
+      .partners-grid { gap: 20px; }
+
+      .cta-section { padding: 32px; }
+      .cta-section h3 { font-size: 1.5rem; }
+
+      .footer { padding: 40px 20px 30px; }
+      .footer-content { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════ NAVBAR ══════════════════════════════════════ -->
+<nav class="navbar">
+  <a href="#" class="navbar-logo">
+    <img src="Logo/CSILOGO_colored.png" alt="CSI Logo" />
+    <div>
+      <span class="navbar-logo-text">CHYMIST SALES INC.</span>
+      <span class="navbar-logo-tagline">We Make It Happen</span>
+    </div>
+  </a>
+  <div class="navbar-menu">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#ingredients">Products</a>
+    <a href="#partners">Partners</a>
+  </div>
+  <a href="#contact" class="navbar-cta">Contact Us</a>
+</nav>
+
+<div class="page-wrapper">
+  <!-- ══════════════════════════════════════ HERO ══════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <p class="hero-eyebrow">Chymist Sales Inc. — 20 Years of FMCG Expertise</p>
+    <h1>Your <em>Center of Solutions</em> for Food, Pharma &amp; Cosmetics</h1>
+    <p class="hero-sub">From raw material to finished product — CSI is the single partner that covers every step of your supply chain. Toll manufacturing, global sourcing, quality assurance, and regulatory compliance, all under one roof.</p>
+    <div class="hero-ctas">
+      <a href="mailto:CSI@Chymist.net" class="btn-primary">Get a Customized Quote</a>
+      <a href="#services" class="btn-ghost">Explore Our Services</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-cell">
+        <span class="stat-num">20+</span>
+        <span class="stat-desc">Years of FMCG Experience</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">4</span>
+        <span class="stat-desc">End-to-End Services</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">1</span>
+        <span class="stat-desc">Stop for Everything</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-content">
+  <!-- ══════════════════════════════════════ ABOUT ══════════════════════════════════════ -->
+  <section class="about" id="about">
+    <div class="about-layout">
+      <div>
+        <p class="section-label">About CSI</p>
+        <h2>Built to be more than a <span>supplier.</span></h2>
+        <p class="about-body">Backed by over 20 years of FMCG expertise, Chymist Sales Inc. began as a raw material supplier for the Philippine food, nutritional, pharmaceutical, and cosmetics industries. Today, we have evolved into something far more strategic — a comprehensive solutions partner with the expertise, infrastructure, and dedicated teams to take your product from concept to commercial shelf.</p>
+        <p class="about-body">We don't just deliver ingredients. We bring innovative thinking, supply chain efficiency, and made-to-specification manufacturing to every partnership.</p>
+        <blockquote class="about-pull">"Our vision is to be known as the Center of Comprehensive Solutions — creating what our clients need before they even know to ask."</blockquote>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.5-1.3 4.7-3.3 6L15 18H9l-.7-3C6.3 13.7 5 11.5 5 9a7 7 0 0 1 7-7z"/></svg></div>
+          <p class="value-name">Innovative</p>
+          <p class="value-desc">Patent-backed, research-driven products that keep your brand ahead of the market.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <p class="value-name">Integrity</p>
+          <p class="value-desc">Honest, respectful partnerships built on the highest quality standards.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <p class="value-name">Reliability</p>
+          <p class="value-desc">Premium raw materials sourced globally. Name what you need — we'll deliver it.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <p class="value-name">Efficiency</p>
+          <p class="value-desc">Optimized one-stop processes that turn your vision into a finished product, faster.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ SERVICES ══════════════════════════════════════ -->
+  <section id="services">
+    <div class="services-header">
+      <p class="section-label">What We Do</p>
+      <h2>Four services. One seamless supply chain.</h2>
+      <p class="services-lead">Every service is designed to connect to the next — so your product moves forward without friction, delays, or the overhead of managing multiple vendors.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card featured">
+        <div class="featured-badge">Flagship</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <p class="service-name">Toll Manufacturing</p>
+        <p class="service-tagline">Your formula. Our facility.</p>
+        <p class="service-desc">Access production-grade equipment and flexible infrastructure — without the capital investment. We process raw materials into semi-finished or finished products at any batch size, from R&amp;D pilot runs to full commercial scale. You retain IP ownership; we deliver execution.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <p class="service-name">Supply Trading</p>
+        <p class="service-tagline">Global sourcing. Local reliability.</p>
+        <p class="service-desc">Streamline your supply chain by working with a single, trusted trading partner. We source premium raw materials from global suppliers that meet your exact specifications — eliminating the complexity of managing multiple vendors and reducing procurement risk.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div>
+        <p class="service-name">Quality Control Testing</p>
+        <p class="service-tagline">Safe. Effective. Verified.</p>
+        <p class="service-desc">Our qualified technical staff provide rigorous analytical testing to ensure your product meets purity, safety, and efficacy standards. Bring us your samples at any stage — we deliver documented, defensible results that protect your brand and your customers.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+        <p class="service-name">Regulatory &amp; Documentation</p>
+        <p class="service-tagline">Navigate compliance with confidence.</p>
+        <p class="service-desc">Regulatory paperwork shouldn't slow down your launch. We assist with FDA license applications, trademark filings, patent applications, and all supporting documentation — so you can enter the market faster and with full legal standing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ INGREDIENTS ══════════════════════════════════════ -->
+  <section class="ingredients" id="ingredients">
+    <p class="section-label">Ingredient Portfolio</p>
+    <h2>Ingredients built around outcomes, not SKUs.</h2>
+    <p class="ingredients-lead">We match your formulation goals to the right materials — from high-performance specialty bioactives to the essential production ingredients that form the backbone of every great product.</p>
+
+    <p class="tier-label">Specialty Bioactives &amp; Functional Ingredients</p>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <p class="cat-name">Skin &amp; Beauty</p>
+        <p class="cat-benefit">Inside-out beauty ingredients that deliver visible, measurable results.</p>
+        <p class="cat-examples">Bovine &amp; marine collagen (multiple sources) · Type II Collagen · Phytoceramides · Probiotic personal care actives</p>
+      </div>
+
+      <div class="cat-card">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <p class="cat-name">Gut &amp; Wellness</p>
+        <p class="cat-benefit">Customizable probiotic solutions for supplements and functional foods.</p>
+        <p class="cat-examples">Custom CFU probiotic blends · Finished probiotic capsules · Kombucha &amp; yogurt cultures · Probiotic liquid &amp; powder formulations</p>
+      </div>
+
+      <div class="cat-card">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 8C8 10 5.9 16.17 3.82 19.5c-.13.21.09.45.31.34C6.44 18.47 10.36 17 12 17c4 0 7-2 7-7 0-1.5-.5-3-2-2z"/></svg></div>
+        <p class="cat-name">Natural Sweeteners</p>
+        <p class="cat-benefit">Clean-label sweetness for health-conscious formulations — with or without calories.</p>
+        <p class="cat-examples">Monk Fruit Extract · Stevia (standard &amp; STEVIA ACS 45 masked) · Sweet Tea Extract · Deionized Apple &amp; Pear Juice</p>
+      </div>
+
+      <div class="cat-card">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+        <p class="cat-name">Flavors &amp; Concentrates</p>
+        <p class="cat-benefit">Taste differentiation across formats — from natural to synthetic, powder to liquid.</p>
+        <p class="cat-examples">Natural · Nature-identical · Synthetic flavors · Acerola, apple, pear, orange, passion fruit, pomegranate, white grape concentrates</p>
+      </div>
+
+      <div class="cat-card">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M8 7H6a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-2"/></svg></div>
+        <p class="cat-name">Delivery Systems</p>
+        <p class="cat-benefit">Protect your actives and ensure bioavailability with the right encapsulation format.</p>
+        <p class="cat-examples">Hard gelatin (EGC) · Vegetarian · Delayed-release (DR) · Full-range capsule sizing for all dose forms</p>
+      </div>
+    </div>
+
+    <p class="tier-label">Core Manufacturing &amp; Industrial &amp; Functional Essentials</p>
+    <div class="cat-grid">
+      <div class="cat-card commodity">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div>
+        <div>
+          <p class="cat-name">Essential Production Ingredients</p>
+          <p class="cat-benefit">The functional backbone of every formulation — reliable, specification-grade, and always available.</p>
+          <p class="cat-examples">The workhorses manufacturers can't afford to compromise on. CSI supplies proven commodity and functional base ingredients that meet strict industrial and food-grade specifications, keeping your production line running without interruption.</p>
+          <div class="ingredient-pills">
+            <span class="pill">Anhydrous Caffeine</span>
+            <span class="pill">Coffee Ingredients</span>
+            <span class="pill">Energy Premix</span>
+            <span class="pill">DL-Malic Acid</span>
+            <span class="pill">Citric Acid</span>
+            <span class="pill">Acidulants</span>
+            <span class="pill">Sodium Citrate</span>
+            <span class="pill">Calcium Disodium EDTA</span>
+            <span class="pill">Preservatives</span>
+            <span class="pill">Functional Base Ingredients</span>
+            <span class="pill">Sucralose</span>
+            <span class="pill">Acesulfame K</span>
+            <span class="pill">Sweet Flavor</span>
+            <span class="pill">Sorbitol</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <strong>Can't find what you need?</strong> Our sourcing capabilities extend well beyond this portfolio. Tell us your specification and we'll track it down — that's the CSI promise.
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ PARTNERS ══════════════════════════════════════ -->
+  <section id="partners">
+    <div class="partners-header">
+      <p class="section-label">Trusted Partner Suppliers</p>
+      <h2>World-class partners. Exclusive access.</h2>
+      <p>We don't just resell ingredients — we hold exclusive distribution rights for leading global innovators, giving your products preferential access to science-backed actives that competitors simply can't source locally.</p>
+    </div>
+
+    <div class="partners-grid">
+      <div class="partner-card">
+        <div class="partner-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M8 7H6a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-2"/></svg></div>
+        <p class="partner-name">Lonza</p>
+        <p class="partner-role">Capsule Partner</p>
+        <p class="partner-desc">A global leader in pharmaceutical and nutraceutical manufacturing, Lonza supplies CSI with its premium capsule portfolio. From hard gelatin to vegetarian and delayed-release formats, Lonza's capsule solutions set the industry benchmark for quality, consistency, and bioavailability.</p>
+        <div class="partner-tags">
+          <span class="tag">Hard Gelatin Capsules</span>
+          <span class="tag">Vegetarian Capsules</span>
+          <span class="tag">Delayed Release</span>
+          <span class="tag">Licaps®</span>
+        </div>
+        <a class="partner-link" href="https://www.lonza.com" target="_blank" rel="noopener">Visit Lonza <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+        <p class="partner-name">Robertet Health &amp; Beauty</p>
+        <p class="partner-role">Ingredient Partner</p>
+        <p class="partner-desc">One of the world's foremost natural ingredient houses, Robertet's Health &amp; Beauty division blends scientific innovation with nature to deliver sustainable wellness and beauty solutions. Their portfolio spans nutracosmetics, topical cosmetics, and functional food ingredients with traceable natural origins.</p>
+        <div class="partner-tags">
+          <span class="tag">SOD B® Antioxidant</span>
+          <span class="tag">Lipowheat™</span>
+          <span class="tag">Nutracosmetics</span>
+          <span class="tag">Natural Extracts</span>
+        </div>
+        <a class="partner-link" href="https://www.robertet.com/health-beauty/" target="_blank" rel="noopener">Visit Robertet Health &amp; Beauty <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </div>
+
+      <div class="partner-card exclusive">
+        <div class="excl-badge">Exclusive Distributor</div>
+        <div class="partner-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/></svg></div>
+        <p class="partner-name">Gnosis by Lesaffre</p>
+        <p class="partner-role">Exclusive Distributor — Philippines</p>
+        <p class="partner-desc">A biotech leader in fermentation-derived ingredients for nutraceuticals, pharma, and functional foods. As exclusive Philippine distributor, CSI brings Gnosis's full portfolio to local manufacturers — including their acclaimed vitamins, probiotics, and branded active ingredients backed by extensive clinical data.</p>
+        <div class="partner-tags">
+          <span class="tag">MenaQ7® Vitamin K2</span>
+          <span class="tag">Quatrefolic®</span>
+          <span class="tag">Adonat® SAMe</span>
+          <span class="tag">Biotics</span>
+          <span class="tag">Nutritional Yeasts</span>
+        </div>
+        <a class="partner-link" href="https://gnosisbylesaffre.com" target="_blank" rel="noopener">Visit Gnosis by Lesaffre <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </div>
+
+      <div class="partner-card exclusive">
+        <div class="excl-badge">Exclusive Distributor</div>
+        <div class="partner-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <p class="partner-name">Kerry — Proactive Health</p>
+        <p class="partner-role">Exclusive Distributor — Philippines</p>
+        <p class="partner-desc">Kerry's Proactive Health division delivers science-backed wellness ingredients that support 4 million consumers daily. As exclusive Philippine distributor, CSI provides local access to Kerry's clinically validated solutions spanning women's, cognitive, digestive, immune, and infant health.</p>
+        <div class="partner-tags">
+          <span class="tag">Women's Health</span>
+          <span class="tag">Cognitive Health</span>
+          <span class="tag">Digestive Health</span>
+          <span class="tag">Immune Health</span>
+          <span class="tag">Infant Health</span>
+        </div>
+        <a class="partner-link" href="https://supplements.kerry.com/proactive-health/" target="_blank" rel="noopener">Visit Kerry Proactive Health <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </div>
+
+      <div class="partner-card wide">
+        <div class="partner-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div>
+        <div>
+          <p class="partner-name">ADM (Archer Daniels Midland)</p>
+          <p class="partner-role">Sweeteners &amp; Liquid Flavors Partner</p>
+          <p class="partner-desc">With over 120 years of ingredient expertise, ADM is one of the world's most comprehensive food and beverage ingredient companies. CSI partners with ADM specifically for their industry-leading sweetener portfolio and customized liquid flavor solutions — giving clients the taste performance, sugar reduction capabilities, and formulation flexibility needed to win in today's health-conscious market.</p>
+          <div class="adm-specs">
+            <div class="spec-block">
+              <p class="spec-label">Sweeteners</p>
+              <p class="spec-items">Sucralose · Acesulfame K · Stevia · Monk Fruit · Sorbitol · Specialty syrups · Sugar reduction systems · Non-GMO &amp; clean-label options</p>
+            </div>
+            <div class="spec-block">
+              <p class="spec-label">Liquid Flavors</p>
+              <p class="spec-items">Natural flavors · Nature-identical flavors · Flavor modulation systems · Beverage-ready liquid formats · Custom flavor development for F&amp;B applications</p>
+            </div>
+          </div>
+          <a class="partner-link" href="https://www.adm.com/en-us/products-services/human-nutrition/products/" target="_blank" rel="noopener">Visit ADM Human Nutrition <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════───════════════════════════════════ CTA SECTION ══════════════════════════════════════ -->
+  <section class="cta-section" id="contact">
+    <div class="cta-content">
+      <h3>Let's build your next product together.</h3>
+      <p>Tell us what you're working on — from a concept to a finished formulation — and we'll map out exactly how CSI can accelerate it.</p>
+      <div class="cta-contact">
+        <a class="contact-item" href="mailto:CSI@Chymist.net">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          CSI@Chymist.net
+        </a>
+        <a class="contact-item" href="tel:+63288816932">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +632.881.6932
+        </a>
+        <span class="contact-item">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Carmona, Cavite, Philippines
+        </span>
+        <a class="contact-item" href="https://www.chymist.net" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          www.chymist.net
+        </a>
+      </div>
+    </div>
+    <div class="cta-testimonial">
+      <p class="testimonial-quote">"We go above and beyond to bring you the most premium raw materials from around the world. Simply name what you need."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">CSI</div>
+        <div class="testimonial-info">
+          <p class="testimonial-name">Chymist Sales Inc.</p>
+          <p class="testimonial-role">Global Sourcing Partner</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div><!-- /page-content -->
+</div><!-- /page-wrapper -->
+
+<!-- ══════════════════════════════════════ FOOTER ══════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <h3><img src="Logo/CSILOGO_colored.png" alt="CSI Logo" /> CHYMIST SALES INC.</h3>
+      <p>Sourcing premium raw materials globally for over half a decade. From specialized ingredients to toll manufacturing, we make it happen.</p>
+    </div>
+    <div class="footer-section">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#ingredients">Products</a></li>
+        <li><a href="#partners">Partners</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Solutions</h4>
+      <ul>
+        <li><a href="#services">Toll Manufacturing</a></li>
+        <li><a href="#services">Supply Trading</a></li>
+        <li><a href="#services">Quality Control</a></li>
+        <li><a href="#services">Technical Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Headquarters</h4>
+      <p style="font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.7);">Carmona, Cavite, Philippines</p>
+      <div class="footer-contact">
+        <a class="contact-item" href="tel:+63288816932">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +632.881.6932
+        </a>
+        <a class="contact-item" href="mailto:CSI@Chymist.net">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          CSI@Chymist.net
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 CHYMIST SALES INC. ALL RIGHTS RESERVED.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll detection
+  const navbar = document.querySelector('.navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Intersection Observer for scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Observe sections for fade-in animation
+  document.querySelectorAll('section, .partner-card, .service-card, .value-card, .cat-card').forEach(element => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(20px)';
+    element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+    observer.observe(element);
+  });
+</script>
+</body>
+</html>

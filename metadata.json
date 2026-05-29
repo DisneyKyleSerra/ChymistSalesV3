@@ -1,0 +1,7 @@
+{
+  "name": "Chymist Sales Inc.",
+  "description": "Official website for Chymist Sales Inc., a raw materials and ingredients supplier for Food, Pharmaceuticals, and Industrial sectors.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
