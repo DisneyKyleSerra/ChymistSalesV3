@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chymist Sales Inc. — Center of Solutions</title>
-  <link rel="icon" type="image/png" href="Logo/CSILOGO_colored.png" />
+  <link rel="icon" type="image/png" href="CSILOGO_colored.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <style>
     /* ─── RESET & BASE ─── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,7 +40,7 @@
     }
 
     h1, h2, h3, h4, h5, h6 {
-      font-family: 'Arvo', serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       line-height: 1.3;
       color: var(--text-dark);
@@ -135,6 +135,41 @@
     }
 
     .navbar-cta:hover { transform: scale(1.05); }
+
+    /* ─── MOBILE RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 15px 20px;
+      }
+
+      .navbar-menu {
+        margin-right: 0;
+        gap: 0;
+      }
+
+      /* Hide menu items and tagline on mobile */
+      .navbar-menu a {
+        display: none;
+      }
+
+      .navbar-logo-tagline {
+        display: none;
+      }
+
+      /* When scrolled on mobile, hide additional elements */
+      .navbar.scrolled .navbar-logo-text {
+        display: none;
+      }
+
+      .navbar-cta {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+      }
+
+      .navbar-logo img {
+        height: 35px;
+      }
+    }
 
     /* ─── LAYOUT ─── */
     .page-wrapper {
@@ -990,49 +1025,123 @@
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
       .navbar {
-        flex-direction: column;
-        gap: 16px;
-        padding: 16px;
+        padding: 16px 20px;
+        gap: 12px;
       }
 
-      .navbar-menu { gap: 24px; flex-direction: column; margin-right: 0; }
-      .navbar-menu a { display: none; }
-      .navbar-menu a:first-child { display: block; }
+      .navbar-logo { width: 32px; height: 32px; }
+      .navbar-logo-text { font-size: 0.8rem; }
+      .navbar-logo-tagline { display: none; }
 
-      .page-content { padding: 60px 24px; gap: 60px; }
+      .navbar-menu { 
+        gap: 16px; 
+        flex-direction: row;
+        margin-right: auto;
+        flex-wrap: wrap;
+      }
+      .navbar-menu a { 
+        display: none;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+      }
+      .navbar-menu a:first-child { display: inline-block; }
+      
+      .navbar-cta {
+        padding: 10px 20px !important;
+        font-size: 0.85rem;
+      }
+
+      .page-content { 
+        padding: 60px 20px; 
+        gap: 50px; 
+      }
 
       .hero {
         text-align: left;
-        padding: 60px 40px;
-        margin-top: 60px;
+        padding: 80px 24px 60px;
+        margin-top: 70px;
+        width: 100%;
       }
 
-      .hero h1 { font-size: 2rem; }
-      .hero-ctas { justify-content: flex-start; }
-      .hero-stats { grid-template-columns: 1fr; gap: 16px; }
+      .hero h1 { 
+        font-size: 1.8rem; 
+        margin-bottom: 16px;
+      }
+      
+      .hero-eyebrow { margin-bottom: 8px; font-size: 11px; }
+      .hero-sub { font-size: 0.95rem; margin-bottom: 24px; }
+      
+      .hero-ctas { 
+        justify-content: flex-start; 
+        gap: 12px;
+      }
+      
+      .btn-primary, .btn-ghost {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+      }
+      
+      .hero-stats { 
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 16px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255,255,255,0.2);
+      }
+      
+      .stat-num { font-size: 1.8rem; }
+      .stat-desc { font-size: 0.8rem; }
 
       .about-layout,
       .services-grid,
       .partners-grid,
       .cat-grid {
         grid-template-columns: 1fr;
+        gap: 24px;
       }
+
+      .about h2, .services-header h2, .ingredients h2, .partners-header h2 {
+        font-size: 1.6rem;
+        margin-bottom: 12px;
+      }
+
+      .about-body, .services-lead, .ingredients-lead, .partners-header p {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+      }
+
+      .service-card, .partner-card {
+        padding: 20px;
+      }
+
+      .service-name, .partner-name { font-size: 1rem; }
+      .service-icon, .partner-icon { width: 40px; height: 40px; }
 
       .cta-section {
         grid-template-columns: 1fr;
-        padding: 40px;
+        padding: 40px 24px;
+        gap: 32px;
+        border-radius: var(--radius);
       }
+
+      .cta-content h3 { font-size: 1.4rem; }
+      .cta-content p { font-size: 0.9rem; }
 
       .cat-card.commodity,
       .partner-card.wide {
         grid-column: span 1;
         grid-template-columns: 1fr;
+        gap: 20px;
       }
 
-      .cat-card.commodity { gap: 20px; }
-      .partner-card.wide { gap: 24px; }
+      .cat-card { padding: 16px; }
+      .cat-icon, .partner-icon { margin-bottom: 12px; }
+      .cat-name, .partner-role { font-size: 0.85rem; }
 
-      .adm-specs { grid-template-columns: 1fr; }
+      .adm-specs { 
+        grid-template-columns: 1fr; 
+        gap: 12px;
+      }
+      
       .values-grid { grid-template-columns: 1fr; }
 
       .footer-content {
@@ -1047,27 +1156,76 @@
       }
 
       .footer-legal { display: flex; justify-content: center; gap: 0; }
-      .footer-legal a { margin: 0 12px; }
+      .footer-legal a { margin: 0 12px; font-size: 0.8rem; }
     }
 
     @media (max-width: 480px) {
-      .page-content { padding: 40px 16px; }
+      .navbar {
+        padding: 12px 16px;
+      }
+
+      .navbar-logo { width: 28px; height: 28px; }
+      .navbar-logo-text { font-size: 0.7rem; }
+      .navbar-cta { padding: 8px 16px !important; font-size: 0.75rem; }
+
+      .page-content { 
+        padding: 40px 16px; 
+        gap: 40px;
+      }
       
       .hero {
-        padding: 40px 20px;
+        padding: 60px 16px 40px;
         margin-top: 60px;
       }
       
-      .hero h1 { font-size: 1.5rem; }
-      .hero-stats { padding: 20px; }
+      .hero h1 { 
+        font-size: 1.4rem; 
+        margin-bottom: 12px;
+      }
+      
+      .hero-eyebrow { font-size: 10px; }
+      .hero-sub { font-size: 0.85rem; margin-bottom: 16px; }
 
-      .services-grid { gap: 20px; }
-      .partners-grid { gap: 20px; }
+      .hero-ctas { 
+        flex-direction: column;
+        gap: 10px;
+      }
 
-      .cta-section { padding: 32px; }
-      .cta-section h3 { font-size: 1.5rem; }
+      .btn-primary, .btn-ghost {
+        width: 100%;
+        padding: 14px 20px;
+        font-size: 0.85rem;
+      }
 
-      .footer { padding: 40px 20px 30px; }
+      .hero-stats { 
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 16px;
+      }
+      
+      .stat-num { font-size: 1.5rem; }
+      .stat-desc { font-size: 0.75rem; }
+
+      h2 { font-size: 1.4rem; }
+      h3 { font-size: 1rem; }
+
+      .services-grid, .partners-grid, .cat-grid { gap: 16px; }
+      .service-card, .partner-card, .cat-card { padding: 16px; }
+
+      .service-name, .partner-name { font-size: 0.95rem; }
+      .service-desc, .partner-desc { font-size: 0.85rem; }
+
+      .cta-section { 
+        padding: 24px 16px;
+        gap: 20px;
+      }
+      
+      .cta-content h3 { font-size: 1.2rem; }
+      .cta-content p { font-size: 0.8rem; }
+
+      .footer { padding: 40px 16px 20px; }
+      .footer-section h4 { font-size: 0.9rem; }
+      .contact-item { font-size: 0.8rem; }
       .footer-content { gap: 24px; }
     }
   </style>
@@ -1077,7 +1235,7 @@
 <!-- ══════════════════════════════════════ NAVBAR ══════════════════════════════════════ -->
 <nav class="navbar">
   <a href="#" class="navbar-logo">
-    <img src="Logo/CSILOGO_colored.png" alt="CSI Logo" />
+    <img src="CSILOGO_colored.png" alt="CSI Logo" />
     <div>
       <span class="navbar-logo-text">CHYMIST SALES INC.</span>
       <span class="navbar-logo-tagline">We Make It Happen</span>
@@ -1086,8 +1244,8 @@
   <div class="navbar-menu">
     <a href="#about">About</a>
     <a href="#services">Services</a>
-    <a href="#ingredients">Products</a>
     <a href="#partners">Partners</a>
+    <a href="#ingredients">Products</a>
   </div>
   <a href="#contact" class="navbar-cta">Contact Us</a>
 </nav>
@@ -1099,7 +1257,6 @@
     <h1>Your <em>Center of Solutions</em> for Food, Pharma &amp; Cosmetics</h1>
     <p class="hero-sub">From raw material to finished product — CSI is the single partner that covers every step of your supply chain. Toll manufacturing, global sourcing, quality assurance, and regulatory compliance, all under one roof.</p>
     <div class="hero-ctas">
-      <a href="mailto:CSI@Chymist.net" class="btn-primary">Get a Customized Quote</a>
       <a href="#services" class="btn-ghost">Explore Our Services</a>
     </div>
     <div class="hero-stats">
@@ -1193,6 +1350,100 @@
     </div>
   </section>
 
+  <!-- ══════════════════════════════════════ PARTNERS ══════════════════════════════════════ -->
+  <section class="partners" id="partners">
+    <div class="partners-header">
+      <p class="section-label">Trusted Partner Suppliers</p>
+      <h2>World-class partners. Exclusive access.</h2>
+      <p>We don't just resell ingredients — we hold exclusive distribution rights for leading global innovators, giving your products preferential access to science-backed actives that competitors simply can't source locally.</p>
+    </div>
+
+    <div class="partners-grid">
+      <!-- LONZA -->
+      <div class="partner-card">
+        <div class="partner-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 7V5c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v2m-2 4v8m-6-8h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z"/></svg></div>
+        <p class="partner-name">Lonza</p>
+        <p class="partner-role">Capsule Partner</p>
+        <p class="partner-desc">A global leader in pharmaceutical and nutraceutical manufacturing, Lonza supplies CSI with its premium capsule portfolio. From hard gelatin to vegetarian and delayed-release formats, Lonza's capsule solutions set the industry benchmark for quality, consistency, and bioavailability.</p>
+        <div class="partner-tags">
+          <span class="tag">Hard Gelatin Capsules</span>
+          <span class="tag">Vegetarian Capsules</span>
+          <span class="tag">Delayed Release</span>
+          <span class="tag">Licaps®</span>
+        </div>
+        <a class="partner-link" href="#" target="_blank">Visit Lonza <svg viewBox="0 0 24 24"><polyline points="7 17 17 7"></polyline><polyline points="17 7 7 7"></polyline><polyline points="17 7 17 17"></polyline></svg></a>
+      </div>
+
+      <!-- ROBERTET -->
+      <div class="partner-card">
+        <div class="partner-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <p class="partner-name">Robertet Health & Beauty</p>
+        <p class="partner-role">Ingredient Partner</p>
+        <p class="partner-desc">One of the world's foremost natural ingredient houses, Robertet's Health & Beauty division blends scientific innovation with nature to deliver sustainable wellness and beauty solutions. Their portfolio spans nutracosmetics, topical cosmetics, and functional food ingredients with traceable natural origins.</p>
+        <div class="partner-tags">
+          <span class="tag">SOD B® Antioxidant</span>
+          <span class="tag">Lipowheat™</span>
+          <span class="tag">Nutracosmetics</span>
+          <span class="tag">Natural Extracts</span>
+        </div>
+        <a class="partner-link" href="#" target="_blank">Visit Robertet Health & Beauty <svg viewBox="0 0 24 24"><polyline points="7 17 17 7"></polyline><polyline points="17 7 7 7"></polyline><polyline points="17 7 17 17"></polyline></svg></a>
+      </div>
+
+      <!-- GNOSIS -->
+      <div class="partner-card exclusive">
+        <div class="excl-badge">Exclusive Distributor</div>
+        <div class="partner-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div>
+        <p class="partner-name">Gnosis by Lesaffre</p>
+        <p class="partner-role">Exclusive Distributor — Philippines</p>
+        <p class="partner-desc">A biotech leader in fermentation-derived ingredients for nutraceuticals, pharma, and functional foods. As exclusive Philippine distributor, CSI brings Gnosis's full portfolio to local manufacturers — including their acclaimed vitamins, probiotics, and branded active ingredients backed by extensive clinical data.</p>
+        <div class="partner-tags">
+          <span class="tag">MenaQ7® Vitamin K2</span>
+          <span class="tag">Quatrefolic®</span>
+          <span class="tag">Adonat® SAMe</span>
+          <span class="tag">Nutritional Yeasts</span>
+        </div>
+        <a class="partner-link" href="#" target="_blank">Visit Gnosis by Lesaffre <svg viewBox="0 0 24 24"><polyline points="7 17 17 7"></polyline><polyline points="17 7 7 7"></polyline><polyline points="17 7 17 17"></polyline></svg></a>
+      </div>
+
+      <!-- KERRY -->
+      <div class="partner-card exclusive">
+        <div class="excl-badge">Exclusive Distributor</div>
+        <div class="partner-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+        <p class="partner-name">Kerry — Proactive Health</p>
+        <p class="partner-role">Exclusive Distributor — Philippines</p>
+        <p class="partner-desc">Kerry's Proactive Health division delivers science-backed wellness ingredients that support 4 million consumers daily. As exclusive Philippine distributor, CSI provides local access to Kerry's clinically validated solutions spanning women's, cognitive, digestive, immune, and infant health.</p>
+        <div class="partner-tags">
+          <span class="tag">Women's Health</span>
+          <span class="tag">Cognitive Health</span>
+          <span class="tag">Digestive Health</span>
+          <span class="tag">Immune Health</span>
+        </div>
+        <a class="partner-link" href="#" target="_blank">Visit Kerry Proactive Health <svg viewBox="0 0 24 24"><polyline points="7 17 17 7"></polyline><polyline points="17 7 7 7"></polyline><polyline points="17 7 17 17"></polyline></svg></a>
+      </div>
+
+      <!-- ADM - WIDE CARD -->
+      <div class="partner-card wide">
+        <div class="partner-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+        <div>
+          <p class="partner-name">ADM (Archer Daniels Midland)</p>
+          <p class="partner-role">Sweeteners & Liquid Flavors Partner</p>
+          <p class="partner-desc">With over 120 years of ingredient expertise, ADM is one of the world's most comprehensive food and beverage ingredient companies. CSI partners with ADM specifically for their industry-leading sweetener portfolio and customized liquid flavor solutions — giving clients the taste performance, sugar reduction capabilities, and formulation flexibility needed to win in today's health-conscious market.</p>
+          <div class="adm-specs">
+            <div class="spec-block">
+              <p class="spec-label">Sweeteners</p>
+              <p class="spec-items">Sucralose · Acesulfame K · Stevia · Monk Fruit · Sorbitol · Specialty syrups · Sugar reduction systems · Non-GMO & clean-label options</p>
+            </div>
+            <div class="spec-block">
+              <p class="spec-label">Liquid Flavors</p>
+              <p class="spec-items">Natural flavors · Nature-identical flavors · Flavor modulation systems · Beverage-ready liquid formats · Custom flavor development for F&B applications</p>
+            </div>
+          </div>
+          <a class="partner-link" href="#" target="_blank">Visit ADM Human Nutrition <svg viewBox="0 0 24 24"><polyline points="7 17 17 7"></polyline><polyline points="17 7 7 7"></polyline><polyline points="17 7 17 17"></polyline></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ══════════════════════════════════════ INGREDIENTS ══════════════════════════════════════ -->
   <section class="ingredients" id="ingredients">
     <p class="section-label">Ingredient Portfolio</p>
@@ -1270,97 +1521,6 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════ PARTNERS ══════════════════════════════════════ -->
-  <section id="partners">
-    <div class="partners-header">
-      <p class="section-label">Trusted Partner Suppliers</p>
-      <h2>World-class partners. Exclusive access.</h2>
-      <p>We don't just resell ingredients — we hold exclusive distribution rights for leading global innovators, giving your products preferential access to science-backed actives that competitors simply can't source locally.</p>
-    </div>
-
-    <div class="partners-grid">
-      <div class="partner-card">
-        <div class="partner-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M8 7H6a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-2"/></svg></div>
-        <p class="partner-name">Lonza</p>
-        <p class="partner-role">Capsule Partner</p>
-        <p class="partner-desc">A global leader in pharmaceutical and nutraceutical manufacturing, Lonza supplies CSI with its premium capsule portfolio. From hard gelatin to vegetarian and delayed-release formats, Lonza's capsule solutions set the industry benchmark for quality, consistency, and bioavailability.</p>
-        <div class="partner-tags">
-          <span class="tag">Hard Gelatin Capsules</span>
-          <span class="tag">Vegetarian Capsules</span>
-          <span class="tag">Delayed Release</span>
-          <span class="tag">Licaps®</span>
-        </div>
-        <a class="partner-link" href="https://www.lonza.com" target="_blank" rel="noopener">Visit Lonza <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-      </div>
-
-      <div class="partner-card">
-        <div class="partner-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
-        <p class="partner-name">Robertet Health &amp; Beauty</p>
-        <p class="partner-role">Ingredient Partner</p>
-        <p class="partner-desc">One of the world's foremost natural ingredient houses, Robertet's Health &amp; Beauty division blends scientific innovation with nature to deliver sustainable wellness and beauty solutions. Their portfolio spans nutracosmetics, topical cosmetics, and functional food ingredients with traceable natural origins.</p>
-        <div class="partner-tags">
-          <span class="tag">SOD B® Antioxidant</span>
-          <span class="tag">Lipowheat™</span>
-          <span class="tag">Nutracosmetics</span>
-          <span class="tag">Natural Extracts</span>
-        </div>
-        <a class="partner-link" href="https://www.robertet.com/health-beauty/" target="_blank" rel="noopener">Visit Robertet Health &amp; Beauty <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-      </div>
-
-      <div class="partner-card exclusive">
-        <div class="excl-badge">Exclusive Distributor</div>
-        <div class="partner-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/></svg></div>
-        <p class="partner-name">Gnosis by Lesaffre</p>
-        <p class="partner-role">Exclusive Distributor — Philippines</p>
-        <p class="partner-desc">A biotech leader in fermentation-derived ingredients for nutraceuticals, pharma, and functional foods. As exclusive Philippine distributor, CSI brings Gnosis's full portfolio to local manufacturers — including their acclaimed vitamins, probiotics, and branded active ingredients backed by extensive clinical data.</p>
-        <div class="partner-tags">
-          <span class="tag">MenaQ7® Vitamin K2</span>
-          <span class="tag">Quatrefolic®</span>
-          <span class="tag">Adonat® SAMe</span>
-          <span class="tag">Biotics</span>
-          <span class="tag">Nutritional Yeasts</span>
-        </div>
-        <a class="partner-link" href="https://gnosisbylesaffre.com" target="_blank" rel="noopener">Visit Gnosis by Lesaffre <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-      </div>
-
-      <div class="partner-card exclusive">
-        <div class="excl-badge">Exclusive Distributor</div>
-        <div class="partner-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <p class="partner-name">Kerry — Proactive Health</p>
-        <p class="partner-role">Exclusive Distributor — Philippines</p>
-        <p class="partner-desc">Kerry's Proactive Health division delivers science-backed wellness ingredients that support 4 million consumers daily. As exclusive Philippine distributor, CSI provides local access to Kerry's clinically validated solutions spanning women's, cognitive, digestive, immune, and infant health.</p>
-        <div class="partner-tags">
-          <span class="tag">Women's Health</span>
-          <span class="tag">Cognitive Health</span>
-          <span class="tag">Digestive Health</span>
-          <span class="tag">Immune Health</span>
-          <span class="tag">Infant Health</span>
-        </div>
-        <a class="partner-link" href="https://supplements.kerry.com/proactive-health/" target="_blank" rel="noopener">Visit Kerry Proactive Health <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-      </div>
-
-      <div class="partner-card wide">
-        <div class="partner-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div>
-        <div>
-          <p class="partner-name">ADM (Archer Daniels Midland)</p>
-          <p class="partner-role">Sweeteners &amp; Liquid Flavors Partner</p>
-          <p class="partner-desc">With over 120 years of ingredient expertise, ADM is one of the world's most comprehensive food and beverage ingredient companies. CSI partners with ADM specifically for their industry-leading sweetener portfolio and customized liquid flavor solutions — giving clients the taste performance, sugar reduction capabilities, and formulation flexibility needed to win in today's health-conscious market.</p>
-          <div class="adm-specs">
-            <div class="spec-block">
-              <p class="spec-label">Sweeteners</p>
-              <p class="spec-items">Sucralose · Acesulfame K · Stevia · Monk Fruit · Sorbitol · Specialty syrups · Sugar reduction systems · Non-GMO &amp; clean-label options</p>
-            </div>
-            <div class="spec-block">
-              <p class="spec-label">Liquid Flavors</p>
-              <p class="spec-items">Natural flavors · Nature-identical flavors · Flavor modulation systems · Beverage-ready liquid formats · Custom flavor development for F&amp;B applications</p>
-            </div>
-          </div>
-          <a class="partner-link" href="https://www.adm.com/en-us/products-services/human-nutrition/products/" target="_blank" rel="noopener">Visit ADM Human Nutrition <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ═════───════════════════════════════════ CTA SECTION ══════════════════════════════════════ -->
   <section class="cta-section" id="contact">
     <div class="cta-content">
@@ -1403,7 +1563,7 @@
 <footer class="footer">
   <div class="footer-content">
     <div class="footer-brand">
-      <h3><img src="Logo/CSILOGO_colored.png" alt="CSI Logo" /> CHYMIST SALES INC.</h3>
+      <h3><img src="CSILOGO_colored.png" alt="CSI Logo" /> CHYMIST SALES INC.</h3>
       <p>Sourcing premium raw materials globally for over half a decade. From specialized ingredients to toll manufacturing, we make it happen.</p>
     </div>
     <div class="footer-section">

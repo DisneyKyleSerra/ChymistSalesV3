@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "dev": "vite",
-    "build": "mkdir -p dist && cp index.html dist/ && cp -r css dist/ 2>/dev/null || true"
+    "build": "vite build",
     "preview": "vite preview"
   },
   "keywords": [
